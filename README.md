@@ -1,22 +1,35 @@
-# RNA-seq Nextflow Pipeline
+# Variant Calling Pipeline (Nextflow DSL2)
 
-This is a beginner-friendly RNA-seq preprocessing pipeline built using Nextflow DSL2.
+This repository contains a student-level variant calling pipeline implemented using Nextflow DSL2.
 
-The pipeline performs basic quality control and adapter trimming on FASTQ files.
 
-## What This Pipeline Does
+# Pipeline Steps
 
-This pipeline performs three standard preprocessing steps:
+The current pipeline performs the following steps:
 
-1. FastQC on raw reads  
-   FastQC evaluates the quality of raw FASTQ files and provides reports on base quality, GC content, and adapter contamination.
+1. Raw read quality control (FastQC)
+   - Assesses sequencing quality before trimming
 
-2. Adapter trimming using Cutadapt 
-   Adapter sequences introduced during library preparation are removed.  
-   This step improves read quality and ensures more accurate alignment to the reference genome.
+2. Adapter trimming and quality filtering (Cutadapt)
 
-3. FastQC on trimmed reads
-   Quality control is repeated after trimming to verify that adapter contamination and poor-quality bases have been removed.
+   - Removes Illumina adapter sequences
+   - Improves read quality and alignment accuracy
+
+3. Post-trimming quality control (FastQC)
+   - Confirms improvement in read quality after preprocessing
+
+###
+Temporary and output directories such as work/, results/, and .nextflow/ are excluded using .gitignore.
+
+
+
+# Configuration
+
+Pipeline parameters are defined in nextflow.config:
+
+* fastq_dir – directory containing input FASTQ files
+* output – base directory for pipeline results
+* adapter – adapter sequence used for trimming (Illumina universal adapter)
 
 
 ## Input
