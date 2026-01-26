@@ -1,9 +1,11 @@
 
 work/
+results/
 .nextflow*
-trace-*.txt
+trace*
 *.log
 
+raw/
+ref/
 data/
-results/
 

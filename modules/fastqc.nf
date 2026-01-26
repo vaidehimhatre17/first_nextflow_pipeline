@@ -1,15 +1,14 @@
 process FASTQC {
 
-    publishDir "${params.output}/fastqc", mode: 'copy'
-
     input:
-    path fastq_file
+    tuple val(sample_id), path(r1), path(r2)
 
     output:
-    path "*_fastqc*"
+    path "*_fastqc.*"
 
     script:
     """
-    fastqc ${fastq_file}
+    fastqc ${r1} ${r2}
     """
 }
+

@@ -1,7 +1,9 @@
 nextflow.enable.dsl = 2
 
-include { TRIM_AND_QC } from './workflows/workflow.nf'
+include { VARIANT_CALLING } from './workflows/variant_calling.nf'
 
 workflow {
-    TRIM_AND_QC()
+    VARIANT_CALLING()
 }
+
+
