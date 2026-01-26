@@ -1,0 +1,9 @@
+
+work/
+.nextflow*
+trace-*.txt
+*.log
+
+data/
+results/
+
