@@ -1,45 +1,31 @@
-# Variant Calling Pipeline (Nextflow DSL2)
+## RNA-seq Variant Calling Pipeline (Nextflow DSL2)
 
-This repository contains a student-level variant calling pipeline implemented using Nextflow DSL2.
+This repository contains a modular Nextflow (DSL2) pipeline for performing basic quality control, read trimming, reference indexing, and alignment as part of a variant-calling workflow.
 
+The pipeline is designed for paired-end FASTQ data.
 
-# Pipeline Steps
+## Pipeline Overview
 
-The current pipeline performs the following steps:
+The workflow performs the following steps:
 
-1. Raw read quality control (FastQC)
-   - Assesses sequencing quality before trimming
+- Quality control of raw paired-end reads using FastQC
 
-2. Adapter trimming and quality filtering (Cutadapt)
+- Read trimming using FastP
 
-   - Removes Illumina adapter sequences
-   - Improves read quality and alignment accuracy
+- Reference genome indexing using BWA-MEM2
 
-3. Post-trimming quality control (FastQC)
-   - Confirms improvement in read quality after preprocessing
+- Alignment of trimmed reads to the reference genome
 
-###
-Temporary and output directories such as work/, results/, and .nextflow/ are excluded using .gitignore.
+## 
 
+FASTQC: Performs quality control analysis on paired-end FASTQ files to assess read quality before downstream processing.
 
+FASTP: Trims and filters paired-end reads to remove low-quality bases and adapters while preserving sample pairing.
 
-# Configuration
+BWA_INDEX: Indexes the reference genome using BWA-MEM2 to prepare it for efficient read alignment.
 
-Pipeline parameters are defined in nextflow.config:
-
-* fastq_dir – directory containing input FASTQ files
-* output – base directory for pipeline results
-* adapter – adapter sequence used for trimming (Illumina universal adapter)
+BWA_ALIGN: Aligns trimmed paired-end reads to the indexed reference genome and produces alignment files.
 
 
-## Input
-
-- Single-end FASTQ files
-
-
-## Output
-
-The pipeline generates results in the `results/` directory:
-
-- FastQC reports (HTML and ZIP files)
-- Trimmed FASTQ files ready for downstream analysis
+## Note
+The pipeline will be extended with SAMtools and BCFtools to perform post-alignment processing and variant calling from the aligned reads
