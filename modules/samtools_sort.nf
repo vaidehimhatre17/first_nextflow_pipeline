@@ -1,16 +1,14 @@
 process SAMTOOLS_SORT {
 
-    publishDir "${params.output}/align", mode: 'copy'
+input:
+path bam
 
-    input:
-    path sam
+output:
+path "aligned.sorted.bam"
 
-    output:
-    path "sample_sorted.bam"
-
-    script:
-    """
-    samtools view -bS ${sam} | samtools sort -o sample_sorted.bam
-
-    """
+script:
+"""
+$SAMTOOLS sort ${bam} -o aligned.sorted.bam
+"""
 }
+

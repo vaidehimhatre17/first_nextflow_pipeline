@@ -1,14 +1,14 @@
 process BWA_INDEX {
 
-    input:
-    path ref
+input:
+path ref
 
-    output:
-    tuple path(ref), path("${ref}.*")
+output:
+tuple path(ref), path("${ref}.*")
 
-    script:
-    """
-    bwa-mem2 index ${ref}
-    """
+script:
+"""
+$BWA index ${ref}
+"""
 }
 

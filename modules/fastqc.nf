@@ -1,14 +1,14 @@
 process FASTQC {
 
-    input:
-    tuple val(sample_id), path(r1), path(r2)
+input:
+tuple val(sample_id), path(r1), path(r2)
 
-    output:
-    path "*_fastqc.*"
+output:
+path "*_fastqc.zip"
 
-    script:
-    """
-    fastqc ${r1} ${r2}
-    """
+script:
+"""
+$FASTQC ${r1} ${r2}
+"""
 }
 

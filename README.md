@@ -1,31 +1,62 @@
-## RNA-seq Variant Calling Pipeline (Nextflow DSL2)
+### Variant Calling Pipeline using Nextflow
 
-This repository contains a modular Nextflow (DSL2) pipeline for performing basic quality control, read trimming, reference indexing, and alignment as part of a variant-calling workflow.
-
-The pipeline is designed for paired-end FASTQ data.
-
-## Pipeline Overview
-
-The workflow performs the following steps:
-
-- Quality control of raw paired-end reads using FastQC
-
-- Read trimming using FastP
-
-- Reference genome indexing using BWA-MEM2
-
-- Alignment of trimmed reads to the reference genome
-
-## 
-
-FASTQC: Performs quality control analysis on paired-end FASTQ files to assess read quality before downstream processing.
-
-FASTP: Trims and filters paired-end reads to remove low-quality bases and adapters while preserving sample pairing.
-
-BWA_INDEX: Indexes the reference genome using BWA-MEM2 to prepare it for efficient read alignment.
-
-BWA_ALIGN: Aligns trimmed paired-end reads to the indexed reference genome and produces alignment files.
+The pipeline starts with raw sequencing reads and gradually processes them into variant call files. Each step helps clean the data, align it correctly to a reference genome, and detect genetic differences.
 
 
-## Note
-The pipeline will be extended with SAMtools and BCFtools to perform post-alignment processing and variant calling from the aligned reads
+
+### Pipeline Flow
+
+Paired-end FASTQ files
+      ↓
+FASTQC (raw reads)
+      ↓
+FASTP (trimming & filtering)
+      ↓
+BWA ALIGNMENT
+      ↓
+SAM → BAM
+      ↓
+SORT BAM
+      ↓
+VARIANT CALLING
+      ↓
+Raw VCF file
+
+
+
+### Workflow Description
+
+-- Quality Assessment (FastQC)
+Evaluates the quality of raw sequencing reads to identify issues such as low base quality or adapter contamination.
+
+-- Read Preprocessing (Fastp)
+Performs adapter trimming and quality filtering to clean the reads before alignment.
+
+-- Read Alignment (BWA-MEM2)
+Maps the processed reads to a reference genome, generating alignment files.
+
+-- Format Conversion (Samtools)
+Converts SAM alignment files into compressed BAM format for efficient storage.
+
+-- BAM Sorting (Samtools)
+Sorts aligned reads by genomic coordinates, preparing them for variant analysis.
+
+-- Variant Detection (BCFtools)
+Identifies sequence variants such as SNPs and small indels and outputs them in VCF format.
+
+
+### Running the Pipeline
+
+-- git clone <repository_url>
+-- cd <repository_directory>
+-- conda env create -f environment.yml
+-- conda activate bnf
+-- nextflow run main.nf
+
+
+
+### Requirements
+
+-- Nextflow
+-- Conda
+
