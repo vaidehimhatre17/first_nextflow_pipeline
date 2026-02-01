@@ -1,0 +1,10 @@
+name: bnf
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - fastqc
+  - fastp
+  - bwa-mem2
+  - samtools
+  - bcftools
