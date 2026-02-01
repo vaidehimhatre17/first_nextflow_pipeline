@@ -4,12 +4,9 @@ This repository contains a modular variant calling pipeline implemented using Ne
 The pipeline processes raw paired-end sequencing reads and produces variant call files (VCF).
 
 
-## Pipeline Overview
-
-The workflow follows standard bioinformatics best practices to ensure accurate variant detection.
-
 ### Pipeline Flow
 
+```
 Paired-end FASTQ files
         ↓
 FastQC (raw reads)
@@ -25,6 +22,7 @@ Sorted BAM
 Variant Calling (BCFtools)
         ↓
 Raw VCF file
+```
 
 
 ## Workflow Description
@@ -51,6 +49,7 @@ Identifies sequence variants such as SNPs and small indels and outputs them in V
 
 ## Project Directory Structure
 
+```
 variant_calling_pipeline/
 ├── main.nf
 ├── nextflow.config
@@ -68,17 +67,24 @@ variant_calling_pipeline/
 │   ├── raw/
 │   └── ref/
 └── results/
+```
 
 
 ## Running the Pipeline
 
-Clone the repository:
+### 1. Clone the repository
+```bash
 git clone <repository_url>
 cd <repository_directory>
+```
 
-Create and activate the conda environment:
+### 2. Create and activate the conda environment
+```bash
 conda env create -f environment.yml
 conda activate bnf
+```
 
-Run
-
+### 3. Run the pipeline
+```bash
+nextflow run main.nf
+```
