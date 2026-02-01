@@ -8,17 +8,24 @@ The pipeline starts with raw sequencing reads and gradually processes them into 
 
 Paired-end FASTQ files
       ↓
+
 FASTQC (raw reads)
+
       ↓
 FASTP (trimming & filtering)
+
       ↓
 BWA ALIGNMENT
+
       ↓
 SAM → BAM
+
       ↓
 SORT BAM
+
       ↓
 VARIANT CALLING
+
       ↓
 Raw VCF file
 
@@ -47,11 +54,11 @@ Identifies sequence variants such as SNPs and small indels and outputs them in V
 
 ### Running the Pipeline
 
--- git clone <repository_url>
--- cd <repository_directory>
--- conda env create -f environment.yml
--- conda activate bnf
--- nextflow run main.nf
+1. git clone <repository_url>
+2.  cd <repository_directory>
+3. conda env create -f environment.yml
+4. conda activate bnf
+5. nextflow run main.nf
 
 
 
