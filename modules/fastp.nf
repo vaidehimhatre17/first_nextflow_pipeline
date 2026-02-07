@@ -10,7 +10,7 @@ path("R2_trimmed.fastq.gz")
 
 script:
 """
-$FASTP \
+${params.FASTP} \
 -i ${r1} \
 -I ${r2} \
 -o R1_trimmed.fastq.gz \

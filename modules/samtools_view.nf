@@ -8,7 +8,7 @@ path "aligned.bam"
 
 script:
 """
-$SAMTOOLS view -bS ${sam} > aligned.bam
+${params.SAMTOOLS} view -bS ${sam} > aligned.bam
 """
 }
 

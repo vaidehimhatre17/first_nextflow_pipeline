@@ -8,7 +8,7 @@ tuple path(ref), path("${ref}.*")
 
 script:
 """
-$BWA index ${ref}
+${params.BWA} index ${ref}
 """
 }
 

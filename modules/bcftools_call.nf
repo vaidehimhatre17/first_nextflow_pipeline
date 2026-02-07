@@ -9,8 +9,8 @@ path "sample_raw.vcf"
 
 script:
 """
-$BCFTOOLS mpileup -f ${ref} ${bam} | \
-$BCFTOOLS call -mv --ploidy 1 -Ov -o sample_raw.vcf
+${params.BCFTOOLS} mpileup -f ${ref} ${bam} | \
+${params.BCFTOOLS} call -mv --ploidy 1 -Ov -o sample_raw.vcf
 """
 }
 

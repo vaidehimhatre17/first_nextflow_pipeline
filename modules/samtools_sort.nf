@@ -8,7 +8,7 @@ path "aligned.sorted.bam"
 
 script:
 """
-$SAMTOOLS sort ${bam} -o aligned.sorted.bam
+${params.SAMTOOLS} sort ${bam} -o aligned.sorted.bam
 """
 }
 

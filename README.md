@@ -88,3 +88,12 @@ conda activate bnf
 ```bash
 nextflow run main.nf
 ```
+
+### Applications and Uses
+
+- Detects genetic variants (SNPs and small mutations) from raw sequencing data.
+- Useful in microbial genomics for comparing strains and studying evolution.
+- Helps identify mutations linked to traits like antibiotic resistance.
+- Can be used in research projects involving genome analysis and variant discovery.
+- Demonstrates the full workflow from FASTQ reads to VCF files for learning bioinformatics.
+- Modular design allows extension for annotation, comparative genomics, or large datasets.

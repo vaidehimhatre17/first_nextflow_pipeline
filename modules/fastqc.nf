@@ -8,7 +8,7 @@ path "*_fastqc.zip"
 
 script:
 """
-$FASTQC ${r1} ${r2}
+${params.FASTQC} ${r1} ${r2}
 """
 }
 

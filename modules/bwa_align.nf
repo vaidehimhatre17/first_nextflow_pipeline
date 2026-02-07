@@ -9,7 +9,7 @@ path "aligned.sam"
 
 script:
 """
-$BWA mem ${ref} ${r1} ${r2} > aligned.sam
+${params.BWA} mem ${ref} ${r1} ${r2} > aligned.sam
 """
 }
 
